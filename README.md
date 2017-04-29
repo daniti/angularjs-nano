@@ -31,26 +31,26 @@ As you can see, it requires `ng-submit="submit()"` and a couple self-explanatory
 Nano Form expects this to be a json (coming either from a pure json file or a webservice) like this:
 ```json
 {
-   "success": boolean,
-   "title": string,
+   "success": true,
+   "title": "Form title",
    "fields": [{
-         "name": string,
-         "label": string,
-         "type": string,
-         "placeholder": string,
-         "value": string,
+         "name": "inputname",
+         "label": "Input label",
+         "type": "text",
+         "placeholder": "Your placeholder",
+         "value": "Foo",
          "options": [{
-               "label": string,
-               "value": string
+               "label": "Option label",
+               "value": "optionvalue"
             }],
          "showif": {
-            "field": string,
-            "condition": string,
-            "value": string
+            "field": "anotherinput",
+            "condition": "==",
+            "value": "Bar"
          }
       }],
-   "submit_label": string,
-   "submit_showalways": boolean
+   "submit_label": "Send",
+   "submit_showalways": true
 }
 ```
 `success`: Webservice success. If false, an error message is displayed instead of the form.
