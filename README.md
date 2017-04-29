@@ -36,7 +36,7 @@ Nano Form expects this to be a json (coming either from a pure json file or a we
    "fields": [{
          "name": "inputname",
          "label": "Input label",
-         "type": "text",
+         "type": "select",
          "placeholder": "Your placeholder",
          "value": "Foo",
          "options": [{
