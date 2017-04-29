@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+   <head>
+      <title>AngularJS - Nano Paging</title>
+      <!-- AngularJS & Bootstrap -->
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+      <link rel="stylesheet" href="css/nano.css">
+
+      <script src="../nano.js"></script>		
+      <script src="../nano-paging/nano-paging.js"></script>			
+
+      <script>
+         var app = angular.module("YourApp", ['Nano']);
+      </script>
+      
+      <style>
+         .nano {
+            min-height: 500px;
+         }  
+      </style>
+   </head>
+
+   <body>
+      <div ng-app="YourApp" class="nano ng-cloak" ng-cloak>
+         <a class="btn btn-default" href="index.htm">Back to list</a>
+         <hr>
+         <h1>Nano Paging</h1>
+         <div role="form" ng-controller="NanoPaging" 
+              webservice-tot="mock_webservices/mock_nano_paging_tot.php" 
+              webservice-paging="mock_webservices/mock_nano_paging.php"
+              show="3">
+            <div class="form-inline">
+               <div class="form-group">
+                  <p>Rows per page:</p>
+                  <select ng-model="show" class="form-control form-inline" ng-change="load()">
+                     <option value="3">3</option>
+                     <option value="10">10</option>
+                     <option value="50">50</option>
+                  </select>
+               </div>
+            </div>
+            <div ng-include src="'../nano-paging/nano-paging-nav.htm'"></div>
+            <!-- <div ng-show="loading">Loading...</div> -->
+            <table class="table table-striped table-hover table-bordered">
+               <!-- Results -->
+               <tr ng-repeat="r in rows">
+                  <td>{{r.label}}</td>
+               </tr>
+               <!-- /Results -->
+            </table>
+
+         </div>
+      </div> 
+   </body>	
+</html>

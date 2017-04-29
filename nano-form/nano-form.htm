@@ -1,0 +1,51 @@
+<div ng-hide="form.aftersubmit">
+   <h2 ng-show="form.title">{{form.title}}</h2>
+   <div ng-repeat="field in form.fields" ng-class="{'form-group':true, 'form-inline':field.display == 'inline', 'has-success':field.saved, 'has-error':field.error,'{{field.class}}':true}" ng-show="check_show_field(field.showif)">
+      <h3 ng-show="field.label && field.type != 'checkbox'" class="control-label">{{field.label}}</h3>
+      <div ng-if="field.type == 'text'">
+         <input ng-model="field.value" ng-change="change(field.name)" placeholder="{{field.placeholder}}" type="text" class="form-control underlined">
+      </div>
+      <div ng-if="field.type == 'statictext'">
+         <p class="form-control-static underlined">{{field.value}}</p>
+      </div>
+      <div ng-if="field.type == 'select'">
+         <select ng-model="field.value" ng-options="item.value as item.label for item in field.options" ng-change="change(field.name)" class="form-control">
+            <option value=""></option>
+         </select>
+      </div>
+      <div ng-if="field.type == 'measure'">
+         <div class="form-inline">
+            <input ng-model="field.value" type="text" class="form-control number" number>
+            <select ng-model="field.um" ng-options="item as item for item in field.measures" ng-change="change(field.name)" class="form-control">
+               <option value=""></option>
+            </select>
+         </div>
+      </div>
+      <div ng-if="field.type == 'number'">
+         <input ng-model="field.value" type="text" class="form-control number" number>
+      </div>
+      <div ng-if="field.type == 'checkbox'">
+         <label>
+            <input ng-model="field.value" class="checkbox" type="checkbox">
+            <span>{{field.label}}</span>
+         </label>
+      </div>
+      <div ng-if="field.type == 'radio' || field.type == 'radio-inline'">
+         <span ng-repeat="item in field.options">
+            <label class="radioblock">
+               <input ng-change="change(field.name)" class="radio" name="{{field.name}}" value="{{item.value}}" ng-model="field.value" type="radio">
+               <span>{{item.label}}</span>
+            </label>
+         </span>
+      </div>
+      <span ng-show="field.saved" class="glyphicon glyphicon-ok"></span>
+      <span ng-show="field.error && !field.error_msg" class="glyphicon glyphicon-remove"></span>
+      <span ng-show="field.error" class="has-error">{{field.error_msg}}</span>
+   </div>
+   <div ng-show="form.changed || form.submit_showalways" class="form-group saver"> <button type="submit" class="btn btn-primary"><span ng-if="!form.submit_label">Save</span><span ng-if="form.submit_label">{{form.submit_label}}</span></button> </div>
+</div>
+<div ng-show="form.aftersubmit">
+   <h2>{{form.aftersubmit.message}}</h2>
+   <a ng-repeat="b in form.aftersubmit.buttons" href="{{b.href}}" class="btn btn-{{b.type}} btn-sm rounded-s" style="margin-right: 5px;"> {{b.label}} </a>
+</div>
+<p class="text-danger" ng-show="form.load_error">Please try again later</p>

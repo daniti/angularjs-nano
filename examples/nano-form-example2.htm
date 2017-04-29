@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+   <head>
+      <title>AngularJS - Nano Form</title>
+      <!-- AngularJS & Bootstrap -->
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+      <link rel="stylesheet" href="css/nano.css">
+
+      <script src="../nano.js"></script>		
+      <script src="../nano-form/nano-form.js"></script>		
+
+      <script>
+         var app = angular.module("YourApp", ['Nano']);
+      </script>
+   </head>
+
+   <body>
+      <div ng-app="YourApp" class="nano ng-cloak" ng-cloak>
+         <a class="btn btn-default" href="index.htm">Back to list</a>
+         <hr>
+         <form role="form" ng-controller="NanoForm" 
+               webservice-get="mock_webservices/mock_nano_form_get.php" 
+               webservice-submit="mock_webservices/mock_nano_form_submit.php?insideformsuccess=true" 
+               ng-submit="submit()">
+            <div ng-include src="'../nano-form/nano-form.htm'"></div>
+         </form>
+      </div> 
+   </body>	
+</html>
