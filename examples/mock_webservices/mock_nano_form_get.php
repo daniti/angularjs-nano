@@ -7,8 +7,7 @@ $fields = array(
         'name' => 'requiredfield',
         'label' => 'Simple input (required)',
         'type' => 'text',
-        'placeholder' => 'Placeholder for this field',
-        'required' => true
+        'placeholder' => 'Placeholder for this field'
     ),
     (object) array(
         'name' => 'checkboxinput',
@@ -48,8 +47,7 @@ $fields = array(
                 'label' => 'Yellow',
                 'value' => 'value4',
             ),
-        ),
-        'required' => false
+        )
     ),
     (object) array(
         'name' => 'color',
@@ -72,14 +70,12 @@ $fields = array(
                 'label' => 'Yellow',
                 'value' => 'yellow',
             ),
-        ),
-        'required' => false
+        )
     ),
     (object) array(
         'name' => 'field5',
         'label' => 'Number',
-        'type' => 'number',
-        'required' => 'false'
+        'type' => 'number'
     ),
 );
 
